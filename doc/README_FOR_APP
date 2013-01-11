@@ -1,0 +1,21 @@
+rails g model Agreement purchase_order_id:integer purchase_order_item_id:integer purchase_order_item_type_id:integer account_id:string quantity:integer notes:text start_date:date end_date:date exuberance_coordinator_id:string funding_source:integer status_id:integer deleted:boolean created_by:string modified_by:string net_suite_account_id:string
+
+rails g model LookUp look_up_type:string name:string value:integer description:string priority:integer
+
+rails g model LicenseTypeLookUp item_id:integer license_type_id:integer
+
+rails g model License license_id:integer agreement_id:integer type_id:integer status_id:integer
+
+rails g model LicenseHistory license_id:integer event_id:integer previous_agreement_id:integer current_agreement_id:integer previous_license_type_id:integer current_license_type_id:integer previous_license_status_id:integer current_license_status_id:integer reason_id:integer notes:text created_by:string
+
+rails g model NetSuiteAccount account_id:integer name:string parent_name:string
+
+rails g model PurchaseOrderItemLookup name:string description:text item_type_id:integer fulfillment_type_id:integer purchase_order_id:integer standard:boolean inactive:boolean
+
+rails g model PurchaseOrder sale_id:integer account_id:string purchase_order_date:date purchase_order_number:string purchase_order_amount:decimal invoice_number:string area_sales_manager_id:string region_id:integer field_technician_id:string discount:decimal tax:decimal notes:text deleted:boolean created_by:string modified_by:string net_suite_account_id:string
+
+rails g model PurchaseOrderItem purchase_order_id:integer purchase_order_item_number:integer item_id:integer item_cost:decimal item_quantity:integer allocated_quantity:integer deleted:boolean created_by:string modified_by:string
+
+rails g model Opportunity agreement_id:integer opportunity_created:date
+
+rails g model Sale sale_number:integer deleted:boolean created_by:string modified_by:string
