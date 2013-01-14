@@ -17,16 +17,12 @@ $ thin start --ssl --ssl-verify --ssl-key-file /home/dane/www/ruby/ssl/server.ke
 
 
 
-If they start in April, they 
-
-
 We have 12 renewal dates (last day of every month)
-
 
 Perpertual license is 1 or 4 years
 
 
-NetSuite
+NetSuite (our CRM)
 Salesman puts in Opportunities
 
 Purchase order comes in
@@ -54,8 +50,6 @@ NetSuite generate the Sales Order number, and we manually put it into LMS.  We n
 We need to be able to search by Invoice number as well
 
 
-
-
 Glossary
 Purchase Order Number - Unique from the Customer, we enter into NetSuite
 Sales Order Number ( Sale Number ) - Generated in NetSuite (our internal number) from our Purchase Order Number
@@ -63,18 +57,18 @@ Invoice Number - We generate this when we create an invoice to send to the custo
 
 License Management System
 NetSuite - Our CRM
-Central - 
+Central - This is our phone home server for all of our engines.
 
 PSC.xlsx - Julie's super-de-duper custom spreadsheet
 We want post sale contracts to go away
 
 
-
 We are not tracking what product version of the product they have
+
 Have a way to put in License Types
 
-
 Allocation happens in Central, if the district is on a server
+
 Allocation happens in LMS if everyone has their own Engine
 
 Training is hell
