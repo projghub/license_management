@@ -1,0 +1,49 @@
+<%- model_class = Agreement -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:purchase_order_id) %>:</strong></dt>
+  <dd><%= @agreement.purchase_order_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:purchase_order_item_id) %>:</strong></dt>
+  <dd><%= @agreement.purchase_order_item_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:purchase_order_item_type_id) %>:</strong></dt>
+  <dd><%= @agreement.purchase_order_item_type_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:account_id) %>:</strong></dt>
+  <dd><%= @agreement.account_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:quantity) %>:</strong></dt>
+  <dd><%= @agreement.quantity %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
+  <dd><%= @agreement.notes %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:start_date) %>:</strong></dt>
+  <dd><%= @agreement.start_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:end_date) %>:</strong></dt>
+  <dd><%= @agreement.end_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:exuberance_coordinator_id) %>:</strong></dt>
+  <dd><%= @agreement.exuberance_coordinator_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:funding_source) %>:</strong></dt>
+  <dd><%= @agreement.funding_source %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status_id) %>:</strong></dt>
+  <dd><%= @agreement.status_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:deleted) %>:</strong></dt>
+  <dd><%= @agreement.deleted %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_by) %>:</strong></dt>
+  <dd><%= @agreement.created_by %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:modified_by) %>:</strong></dt>
+  <dd><%= @agreement.modified_by %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:net_suite_account_id) %>:</strong></dt>
+  <dd><%= @agreement.net_suite_account_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              agreements_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_agreement_path(@agreement), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              agreement_path(@agreement),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

@@ -14,7 +14,7 @@ describe Agreement do
   it { should respond_to(:end_date) }
   it { should respond_to(:exuberance_coordinator_id) }
   it { should respond_to(:funding_source) }
-  it { should respond_to(:status) }
+  it { should respond_to(:status_id) }
   it { should respond_to(:deleted) }
   it { should respond_to(:created_by) }
   it { should respond_to(:modified_by) }

@@ -1,0 +1,99 @@
+<%= form_for @agreement, :html => { class: 'form-horizontal' } do |f| %>
+  <%= render 'layouts/error_messages', target: @agreement %>
+  <div class="control-group">
+    <%= f.label :purchase_order_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :purchase_order_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :purchase_order_item_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :purchase_order_item_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :purchase_order_item_type_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :purchase_order_item_type_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :account_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :account_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :quantity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :quantity, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :notes, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :start_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :end_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :exuberance_coordinator_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :exuberance_coordinator_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :funding_source, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :funding_source, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :status_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :status_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :deleted, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :deleted, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :created_by, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :created_by, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :modified_by, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :modified_by, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :net_suite_account_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :net_suite_account_id, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                agreements_path, :class => 'btn' %>
+  </div>
+<% end %>

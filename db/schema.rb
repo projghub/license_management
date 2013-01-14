@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111215412) do
+ActiveRecord::Schema.define(:version => 20130114174407) do
 
   create_table "agreements", :force => true do |t|
     t.integer  "purchase_order_id"
@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(:version => 20130111215412) do
 
   create_table "lookups", :force => true do |t|
     t.string   "lookup_type"
-    t.string   "name"
+    t.string   "name",                       :null => false
     t.integer  "value"
     t.string   "description"
-    t.integer  "priority"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "priority",    :default => 1
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "net_suite_accounts", :force => true do |t|
@@ -101,17 +101,23 @@ ActiveRecord::Schema.define(:version => 20130111215412) do
     t.datetime "updated_at",                  :null => false
   end
 
+  create_table "purchase_order_item_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "purchase_order_items", :force => true do |t|
-    t.integer  "purchase_order_id"
+    t.integer  "purchase_order_id",                     :null => false
     t.integer  "number"
     t.decimal  "amount"
     t.integer  "quantity"
     t.integer  "allocated_quantity"
-    t.boolean  "deleted"
+    t.boolean  "deleted",            :default => false
     t.string   "created_by"
     t.string   "modified_by"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   create_table "purchase_orders", :force => true do |t|
@@ -137,7 +143,7 @@ ActiveRecord::Schema.define(:version => 20130111215412) do
 
   create_table "sales", :force => true do |t|
     t.integer  "number"
-    t.boolean  "deleted"
+    t.boolean  "deleted",     :null => false
     t.string   "created_by"
     t.string   "modified_by"
     t.datetime "created_at",  :null => false

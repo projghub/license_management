@@ -1,0 +1,67 @@
+<%- model_class = Agreement -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+
+<%= will_paginate(@agreements) %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:purchase_order_id) %></th>
+      <th><%= model_class.human_attribute_name(:purchase_order_item_id) %></th>
+      <th><%= model_class.human_attribute_name(:purchase_order_item_type_id) %></th>
+      <th><%= model_class.human_attribute_name(:account_id) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:notes) %></th>
+      <th><%= model_class.human_attribute_name(:start_date) %></th>
+      <th><%= model_class.human_attribute_name(:end_date) %></th>
+      <th><%= model_class.human_attribute_name(:exuberance_coordinator_id) %></th>
+      <th><%= model_class.human_attribute_name(:funding_source) %></th>
+      <th><%= model_class.human_attribute_name(:status_id) %></th>
+      <th><%= model_class.human_attribute_name(:deleted) %></th>
+      <th><%= model_class.human_attribute_name(:created_by) %></th>
+      <th><%= model_class.human_attribute_name(:modified_by) %></th>
+      <th><%= model_class.human_attribute_name(:net_suite_account_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agreements.each do |agreement| %>
+      <tr>
+        <td><%= link_to agreement.id, agreement_path(agreement) %></td>
+        <td><%= agreement.purchase_order_id %></td>
+        <td><%= agreement.purchase_order_item_id %></td>
+        <td><%= agreement.purchase_order_item_type_id %></td>
+        <td><%= agreement.account_id %></td>
+        <td><%= agreement.quantity %></td>
+        <td><%= agreement.notes %></td>
+        <td><%= agreement.start_date %></td>
+        <td><%= agreement.end_date %></td>
+        <td><%= agreement.exuberance_coordinator_id %></td>
+        <td><%= agreement.funding_source %></td>
+        <td><%= agreement.status_id %></td>
+        <td><%= agreement.deleted %></td>
+        <td><%= agreement.created_by %></td>
+        <td><%= agreement.modified_by %></td>
+        <td><%= agreement.net_suite_account_id %></td>
+        <td><%=l agreement.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_agreement_path(agreement), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      agreement_path(agreement),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_agreement_path,
+            :class => 'btn btn-primary' %>
