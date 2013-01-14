@@ -39,4 +39,6 @@ group :test do
   gem 'database_cleaner', '>= 0.8.0'
   gem 'email_spec', '>= 1.2.1'
   gem 'launchy', '>= 2.1.0'
+  gem 'spork'
+  gem 'guard-spork'
 end

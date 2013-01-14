@@ -18,5 +18,5 @@ describe Agreement do
   it { should respond_to(:deleted) }
   it { should respond_to(:created_by) }
   it { should respond_to(:modified_by) }
-  it { should respond_to(:ns_account_id) }
+  it { should respond_to(:net_suite_account_id) }
 end

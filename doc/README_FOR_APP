@@ -1,21 +1,84 @@
-rails g model Agreement purchase_order_id:integer purchase_order_item_id:integer purchase_order_item_type_id:integer account_id:string quantity:integer notes:text start_date:date end_date:date exuberance_coordinator_id:string funding_source:integer status_id:integer deleted:boolean created_by:string modified_by:string net_suite_account_id:string
+#install RSpec
+$ rails g rspec:install
 
-rails g model LookUp look_up_type:string name:string value:integer description:string priority:integer
+#Precompile assets
+$ RAILS_ENV=production bundle exec rake assets:precompile --trace
 
-rails g model LicenseTypeLookUp item_id:integer license_type_id:integer
+#Generate private key and CSR
+$ openssl genrsa -out server.orig.key 2048
+$ openssl rsa -in server.orig.key -out server.key
+$ openssl req -new -key server.key -out server.csr
 
-rails g model License license_id:integer agreement_id:integer type_id:integer status_id:integer
+#Generate SSL cert
+$ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 
-rails g model LicenseHistory license_id:integer event_id:integer previous_agreement_id:integer current_agreement_id:integer previous_license_type_id:integer current_license_type_id:integer previous_license_status_id:integer current_license_status_id:integer reason_id:integer notes:text created_by:string
+#Thin secure
+$ thin start --ssl --ssl-verify --ssl-key-file /home/dane/www/ruby/ssl/server.key --ssl-cert-file /home/dane/www/ruby/ssl/server.crt
 
-rails g model NetSuiteAccount account_id:integer name:string parent_name:string
 
-rails g model PurchaseOrderItemLookup name:string description:text item_type_id:integer fulfillment_type_id:integer purchase_order_id:integer standard:boolean inactive:boolean
 
-rails g model PurchaseOrder sale_id:integer account_id:string purchase_order_date:date purchase_order_number:string purchase_order_amount:decimal invoice_number:string area_sales_manager_id:string region_id:integer field_technician_id:string discount:decimal tax:decimal notes:text deleted:boolean created_by:string modified_by:string net_suite_account_id:string
+If they start in April, they 
 
-rails g model PurchaseOrderItem purchase_order_id:integer purchase_order_item_number:integer item_id:integer item_cost:decimal item_quantity:integer allocated_quantity:integer deleted:boolean created_by:string modified_by:string
 
-rails g model Opportunity agreement_id:integer opportunity_created:date
+We have 12 renewal dates (last day of every month)
 
-rails g model Sale sale_number:integer deleted:boolean created_by:string modified_by:string
+
+Perpertual license is 1 or 4 years
+
+
+NetSuite
+Salesman puts in Opportunities
+
+Purchase order comes in
+Click on receive Purchase Order
+
+
+Purchase Order Sale Number = NetSuite.Opportunity sales number
+
+
+Opportunity -> Quote -> Sales Order -> Invoice  (what we use to bill the customer)
+
+
+LMS controls the root level of Central
+
+Report happens end of each month 30, 60, 90, automatically gets sent to the APM
+salesmen look at the report each month so they know who to call
+
+Spanish Licenses
+
+LMS never decreases the license count in Central
+
+The report only goes to Julie from Central.  The report needs to go to Frantz (and others) to help clean up Central licenses that are not needed.
+
+NetSuite generate the Sales Order number, and we manually put it into LMS.  We need a way to search by the PO number is the customers internal
+We need to be able to search by Invoice number as well
+
+
+
+
+Glossary
+Purchase Order Number - Unique from the Customer, we enter into NetSuite
+Sales Order Number ( Sale Number ) - Generated in NetSuite (our internal number) from our Purchase Order Number
+Invoice Number - We generate this when we create an invoice to send to the customer
+
+License Management System
+NetSuite - Our CRM
+Central - 
+
+PSC.xlsx - Julie's super-de-duper custom spreadsheet
+We want post sale contracts to go away
+
+
+
+We are not tracking what product version of the product they have
+Have a way to put in License Types
+
+
+Allocation happens in Central, if the district is on a server
+Allocation happens in LMS if everyone has their own Engine
+
+Training is hell
+
+The glitch has to do when transferring licenses.  The program "renews itself" sometimes
+
+State wide licensing has special cases and it's own issues
