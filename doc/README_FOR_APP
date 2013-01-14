@@ -17,11 +17,7 @@ $ thin start --ssl --ssl-verify --ssl-key-file /home/dane/www/ruby/ssl/server.ke
 
 
 
-If they start in April, they 
-
-
 We have 12 renewal dates (last day of every month)
-
 
 Perpertual license is 1 or 4 years
 
