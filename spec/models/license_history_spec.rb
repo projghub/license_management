@@ -13,7 +13,6 @@ describe LicenseHistory do
   it { should respond_to(:previous_license_status_id) }
   it { should respond_to(:current_license_status_id) }
   it { should respond_to(:reason_id) }
-  it { should respond_to(:notes) }
   it { should respond_to(:created_by) }
 
   describe "when license_id not present" do

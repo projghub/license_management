@@ -1,4 +1,4 @@
-class LicenseType < ActiveRecord::Base
+class LicenseStatus < ActiveRecord::Base
   attr_accessible :name
 
   has_many :licenses

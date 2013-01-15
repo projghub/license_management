@@ -24,6 +24,8 @@ class PurchaseOrdersController < ApplicationController
 
   def show
     @purchase_order = PurchaseOrder.find(params[:id])
+    @licenses = License.where(purchase_order_id: @purchase_order.id)
+    @license = @purchase_order.licenses.build
   end
 
   def update

@@ -3,11 +3,13 @@ LicenseManagement::Application.routes.draw do
   match '/login' => 'sessions#new', as: :login
   match '/logout' => 'sessions#destroy', as: :logout
 
-  resources :agreement_statuses
-  resources :agreements
   resources :funding_sources
+  resources :license_statuses
   resources :license_types
-  resources :purchase_orders
+  resources :product_versions
+  resources :purchase_orders do
+    resources :licenses
+  end
   resources :regions
   resources :sessions, only: [:new, :create, :destroy]
  

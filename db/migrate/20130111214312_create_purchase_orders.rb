@@ -9,7 +9,7 @@ class CreatePurchaseOrders < ActiveRecord::Migration
       t.date :purchase_order_date
       t.string :apm #NetSuite?  APM - Area Partnership Manager
       t.string :sts #STS - Support & Training Specialist
-      t.text :notes #create a polymorphic notes table
+      t.integer :funding_source_id
       t.boolean :deleted
       t.string :created_by
       t.string :modified_by

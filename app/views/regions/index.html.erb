@@ -2,6 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_region_path,
+            :class => 'btn btn-primary' %>
+
+<%= will_paginate(@regions) %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -14,7 +21,7 @@
     <% @regions.each do |region| %>
       <tr>
         <td><%= link_to region.name, region_path(region) %></td>
-        <td><%=l region.created_at %></td>
+        <td><%= region.created_at.strftime('%m/%d/%y') %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_region_path(region), :class => 'btn btn-mini' %>
@@ -28,7 +35,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_region_path,
-            :class => 'btn btn-primary' %>

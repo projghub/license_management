@@ -11,32 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115035300) do
-
-  create_table "agreement_statuses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "agreements", :force => true do |t|
-    t.integer  "purchase_order_id",           :null => false
-    t.integer  "purchase_order_item_id"
-    t.integer  "purchase_order_item_type_id"
-    t.integer  "quantity"
-    t.text     "notes"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.string   "exuberance_coordinator_id"
-    t.integer  "funding_source"
-    t.integer  "agreement_status_id"
-    t.boolean  "deleted"
-    t.string   "created_by"
-    t.string   "modified_by"
-    t.string   "net_suite_account_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130115213014) do
 
   create_table "funding_sources", :force => true do |t|
     t.string   "name"
@@ -54,17 +29,15 @@ ActiveRecord::Schema.define(:version => 20130115035300) do
     t.integer  "previous_license_status_id"
     t.integer  "current_license_status_id"
     t.integer  "reason_id"
-    t.text     "notes"
     t.string   "created_by"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
 
-  create_table "license_type_lookups", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "license_type_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "license_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "license_types", :force => true do |t|
@@ -74,21 +47,15 @@ ActiveRecord::Schema.define(:version => 20130115035300) do
   end
 
   create_table "licenses", :force => true do |t|
-    t.integer  "agreement_id"
-    t.integer  "license_type_id"
-    t.integer  "status_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  create_table "lookups", :force => true do |t|
-    t.string   "lookup_type"
-    t.string   "name",                       :null => false
-    t.integer  "value"
-    t.string   "description"
-    t.integer  "priority",    :default => 1
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "purchase_order_id",    :null => false
+    t.integer  "license_type_id",      :null => false
+    t.string   "net_suite_account_id"
+    t.integer  "license_status_id"
+    t.integer  "quantity"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "net_suite_accounts", :force => true do |t|
@@ -107,42 +74,10 @@ ActiveRecord::Schema.define(:version => 20130115035300) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "opportunities", :force => true do |t|
-    t.integer  "agreement_id", :null => false
-    t.date     "created_date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "purchase_order_item_lookups", :force => true do |t|
-    t.integer  "purchase_order_id",           :null => false
-    t.integer  "purchase_order_item_type_id"
-    t.integer  "fulfillment_type_id"
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "standard"
-    t.boolean  "inactive"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-  end
-
-  create_table "purchase_order_item_types", :force => true do |t|
+  create_table "product_versions", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "purchase_order_items", :force => true do |t|
-    t.integer  "purchase_order_id",                     :null => false
-    t.integer  "number"
-    t.decimal  "amount"
-    t.integer  "quantity"
-    t.integer  "allocated_quantity"
-    t.boolean  "deleted",            :default => false
-    t.string   "created_by"
-    t.string   "modified_by"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
   end
 
   create_table "purchase_orders", :force => true do |t|
@@ -154,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20130115035300) do
     t.date     "purchase_order_date"
     t.string   "apm"
     t.string   "sts"
-    t.text     "notes"
+    t.integer  "funding_source_id"
     t.boolean  "deleted"
     t.string   "created_by"
     t.string   "modified_by"
@@ -166,15 +101,6 @@ ActiveRecord::Schema.define(:version => 20130115035300) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "sales", :force => true do |t|
-    t.integer  "number"
-    t.boolean  "deleted",     :null => false
-    t.string   "created_by"
-    t.string   "modified_by"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
 end

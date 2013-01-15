@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(function() {
-  $("#agreement_start_date").datepicker({dateFormat: 'yy-mm-dd'});
-  $("#agreement_end_date").datepicker({dateFormat: 'yy-mm-dd'});
+  $("#license_start_date").datepicker({dateFormat: 'yy-mm-dd'});
+  $("#license_end_date").datepicker({dateFormat: 'yy-mm-dd'});
+  $("#purchase_order_purchase_order_date").datepicker({dateFormat: 'yy-mm-dd'});
 });

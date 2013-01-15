@@ -1,13 +1,13 @@
-<%- model_class = FundingSource -%>
+<%- model_class = ProductVersion -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_funding_source_path,
+            new_product_version_path,
             :class => 'btn btn-primary' %>
 
-<%= will_paginate(@funding_sources) %>
+<%= will_paginate(@product_versions) %>
 
 <table class="table table-striped">
   <thead>
@@ -18,15 +18,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @funding_sources.each do |funding_source| %>
+    <% @product_versions.each do |product_version| %>
       <tr>
-        <td><%= link_to funding_source.name, funding_source_path(funding_source) %></td>
-        <td><%= funding_source.created_at.strftime('%m/%d/%y') %></td>
+        <td><%= link_to product_version, product_version_path(product_version) %></td>
+        <td><%= product_version.created_at.strftime('%m/%d/%y') %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_funding_source_path(funding_source), :class => 'btn btn-mini' %>
+                      edit_product_version_path(product_version), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      funding_source_path(funding_source),
+                      product_version_path(product_version),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>

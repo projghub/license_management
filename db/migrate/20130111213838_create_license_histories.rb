@@ -10,7 +10,6 @@ class CreateLicenseHistories < ActiveRecord::Migration
       t.integer :previous_license_status_id
       t.integer :current_license_status_id
       t.integer :reason_id
-      t.text :notes
       t.string :created_by
 
       t.timestamps

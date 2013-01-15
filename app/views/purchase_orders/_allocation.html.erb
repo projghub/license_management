@@ -1,0 +1,70 @@
+<h1>Add Licenses</h1>
+<%= form_for [@purchase_order, @license], html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'layouts/error_messages', target: @license %>
+  <div class="control-group">
+    <%= f.label :quantity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :quantity, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_date %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_date %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :license_type_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_type_id, LicenseType.all, :id, :name) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                licenses_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+<%- model_class = License -%>
+<h1>Licenses</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:type) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:start_date) %></th>
+      <th><%= model_class.human_attribute_name(:end_date) %></th>
+      <th><%= model_class.human_attribute_name(:status_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @licenses.each do |license| %>
+      <tr>
+        <td><%= link_to license.license_type, license_path(license) %></td>
+        <td><%= license.quantity %></td>
+        <td><%= license.start_date %></td>
+        <td><%= license.end_date %></td>
+        <td><%= license.license_status %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_license_path(license), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      license_path(license),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

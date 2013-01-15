@@ -8,7 +8,7 @@ FactoryGirl.define do
     start_date Date.today
     end_date Date.today
     funding_source 1
-    status_id 1
+    agreement_status_id 1
     deleted false
     created_by "Billy Bob"
     modified_by "Willy Wob"
@@ -36,7 +36,6 @@ FactoryGirl.define do
     previous_license_status_id 1
     current_license_status_id 2
     reason_id 1
-    sequence(:notes) { |n| "License History Notes #{n}" }
     created_by "Billy Bob"
   end
 
@@ -71,7 +70,6 @@ FactoryGirl.define do
     apm "Billy Bob APM"
     region_id "1"
     sts "Billy Bob Field"
-    sequence(:notes) { |n| "Purchase Order Notes #{n}" }
     deleted false
     created_by "Billy Bob"
     modified_by "Willy Wob"

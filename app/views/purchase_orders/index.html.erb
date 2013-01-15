@@ -2,13 +2,19 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_purchase_order_path,
+            :class => 'btn btn-primary' %>
+<%= link_to 'Filter', root_path, class: 'btn btn-success' %>
+
 <%= will_paginate(@purchase_orders) %>
 <%= render 'search' %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:'PO number') %></th>
+      <th><%= model_class.human_attribute_name(:purchase_order_number) %></th>
       <th><%= model_class.human_attribute_name(:sale_number) %></th>
       <th><%= model_class.human_attribute_name(:invoice_number) %></th>
       <th><%= model_class.human_attribute_name(:purchase_order_date) %></th>
@@ -22,8 +28,8 @@
         <td><%= link_to purchase_order.number, purchase_order_path(purchase_order) %></td>
         <td><%= purchase_order.sale_number %></td>
         <td><%= purchase_order.invoice_number %></td>
-        <td><%=l purchase_order.purchase_order_date %></td>
-        <td><%=l purchase_order.created_at %></td>
+        <td><%= purchase_order.purchase_order_date.strftime('%m/%d/%y') %></td>
+        <td><%= purchase_order.created_at.strftime('%m/%d/%y') %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_purchase_order_path(purchase_order), :class => 'btn btn-mini' %>
@@ -37,7 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_purchase_order_path,
-            :class => 'btn btn-primary' %>

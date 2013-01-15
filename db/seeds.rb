@@ -1,19 +1,10 @@
-Agreement.create(purchase_order_id: 1, purchase_order_item_id: 1, start_date: Date.today, end_date: Date.today)
-
-Lookup.create(lookup_type: "lookup", name: "Name 1", value: "value 1", priority: 1)
-
-License.create(agreement_id: 1, license_type_id: 1, status_id: 1)
-
-LicenseTypeLookup.create(item_id: 1, license_type_id: 1)
 
 NetSuiteAccount.create(account_id: 1, name: "NetSuite Name", parent_name: "NetSuite Parent")
 
-purchase_order = PurchaseOrder.create(purchase_order_date: Date.today, number: "1234", sale_number: "2345", net_suite_account_id: 1)
+purchase_order = PurchaseOrder.create!(purchase_order_date: Date.today, number: "1234", sale_number: "2345", net_suite_account_id: 1, region_id: 1)
 purchase_order.notes.build(description: 'purchase order note')
 
-PurchaseOrderItem.create(purchase_order_id: 1, number: "1234", amount: 10, quantity: 2, allocated_quantity: 1, deleted: false) 
-
-Opportunity.create(agreement_id: 1, created_date: Date.today)
+License.create(purchase_order_id: 1, license_type_id: 1, license_status_id: 1, quantity: 20, start_date: Date.today, end_date: Date.today)
 
 Region.create(name: "Central")
 Region.create(name: "Mountain")
@@ -44,6 +35,14 @@ FundingSource.create(name: "Title 1")
 FundingSource.create(name: "Title 3")
 FundingSource.create(name: "Parent Center")
 
-AgreementStatus.create(name: "New")
-AgreementStatus.create(name: "Pending")
-AgreementStatus.create(name: "Not Renewing")
+LicenseStatus.create!(name: "New")
+LicenseStatus.create!(name: "Pending")
+LicenseStatus.create!(name: "Not Renewing")
+
+ProductVersion.create!(name: "Odyssey")
+ProductVersion.create!(name: "Pisces")
+ProductVersion.create!(name: "Aquarius")
+ProductVersion.create!(name: "Whitney")
+
+#EngineType.create(name: "District")
+#EngineType.create(name: "School")
