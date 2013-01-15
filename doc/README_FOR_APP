@@ -17,10 +17,16 @@ $ thin start --ssl --ssl-verify --ssl-key-file /home/dane/www/ruby/ssl/server.ke
 
 
 
+
+Acceptance Criteria
+
+Training is hell
+
+As an APM, when I sell less licenses and turn down licenses in LMS, then LMS should update Central with the correct amount of licenses (or correct as possible, meaning not taking away assigned licenses).
+
 We have 12 renewal dates (last day of every month)
 
 Perpertual license is 1 or 4 years
-
 
 NetSuite (our CRM)
 Salesman puts in Opportunities
@@ -28,19 +34,18 @@ Salesman puts in Opportunities
 Purchase order comes in
 Click on receive Purchase Order
 
+All I care about is "Are they on an Engine?" and "Are they on a Server?"
 
 Purchase Order Sale Number = NetSuite.Opportunity sales number
 
-
 Opportunity -> Quote -> Sales Order -> Invoice  (what we use to bill the customer)
-
 
 LMS controls the root level of Central
 
 Report happens end of each month 30, 60, 90, automatically gets sent to the APM
 salesmen look at the report each month so they know who to call
 
-Spanish Licenses
+There is not a place to add Spanish Licenses
 
 LMS never decreases the license count in Central
 
@@ -49,19 +54,26 @@ The report only goes to Julie from Central.  The report needs to go to Frantz (a
 NetSuite generate the Sales Order number, and we manually put it into LMS.  We need a way to search by the PO number is the customers internal
 We need to be able to search by Invoice number as well
 
-
 Glossary
+Allocate Purchase Order - Take purchase order and divide the licenses between Schools in one District
 Purchase Order Number - Unique from the Customer, we enter into NetSuite
 Sales Order Number ( Sale Number ) - Generated in NetSuite (our internal number) from our Purchase Order Number
+On a Sale - is where all the work happens
 Invoice Number - We generate this when we create an invoice to send to the customer
+On an Invoice - Commissions are paid, revenue is released, customer is billed
+Renewal Rate - 
+Reassign License - Needs to retain the same renewal license
+Killing - We get rid of them if Schools don't need them or they haven't paid for them
+Closed License - If a School closes and the license(s) are transferred elsewhere in the District
+Post Sale Contract -
 
-License Management System
+License Management System (LMS)
 NetSuite - Our CRM
 Central - This is our phone home server for all of our engines.
-
 PSC.xlsx - Julie's super-de-duper custom spreadsheet
-We want post sale contracts to go away
 
+We want post sale contracts to go away
+We need to avoid Double/Triple entry into CRM, LMS, and Central and THE BEAST
 
 We are not tracking what product version of the product they have
 
@@ -71,8 +83,46 @@ Allocation happens in Central, if the district is on a server
 
 Allocation happens in LMS if everyone has their own Engine
 
-Training is hell
 
 The glitch has to do when transferring licenses.  The program "renews itself" sometimes
 
 State wide licensing has special cases and it's own issues
+LMS pre-dates NetSuite (5+) years
+
+What does LMS do that are not done in NetSuite?  We can set renewal dates and a report (30/60/90) is sent to every APM.
+Nightly update
+
+This calculates "Renewal Rates"
+
+
+REPORTS
+
+License Summary (By Status)
+Active
+Renewed
+Converted
+Total
+
+License Summary (By Type)
+New
+Renewal
+Expansion
+Free
+Perpetual
+Converted
+Pilot
+SES
+Total
+
+Licenses Due to Expire
+Expired, This month, 1 month
+
+Pilot Licenses Due to Expire
+
+POs That Have Not Been Allocated or are Partials
+
+Where are reports.imageinelearning.com served from?  Need to be on the VPN
+
+What about site licenses?
+
+We need a test/staging environment setup so that QA can test things and that we are not working on live data.

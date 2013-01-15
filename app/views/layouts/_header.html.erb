@@ -6,15 +6,19 @@
         <ul class="nav pull-right">
           <% if true#current_user %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Agreements<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Agreements", agreements_path %></li>
+                <li><%= link_to "Purchase Orders", purchase_orders_path %></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><%# link_to "Agreements", agreements_path %></li>
+                  <li><%= link_to "Agreement Statuses", agreement_statuses_path %></li>
+                  <li><%= link_to "Funding Sources", funding_sources_path %></li>
+                  <li><%= link_to "Regions", regions_path %></li>
+                  <li><%= link_to "License Types", license_types_path %></li>
                 </ul>
               </li>
             <li><%= link_to "logout", logout_path %></li>

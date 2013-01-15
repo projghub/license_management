@@ -1,22 +1,18 @@
 class CreatePurchaseOrders < ActiveRecord::Migration
   def up
     create_table :purchase_orders do |t|
-      t.integer :sale_id
-      t.string :account_id
-      t.date :purchase_order_date
-      t.string :number
-      t.decimal :amount, precision: 10, scale: 2, default: 0.0, null: false
-      t.string :invoice_number
-      t.string :area_sales_manager_id
+      t.integer :net_suite_account_id
       t.integer :region_id
-      t.string :field_technician_id
-      t.decimal :discount, precision: 10, scale: 2, default: 0.0, null: false
-      t.decimal :tax, precision: 10, scale: 2, default: 0.0, null: false
-      t.text :notes
+      t.string :number
+      t.integer :sale_number
+      t.integer :invoice_number
+      t.date :purchase_order_date
+      t.string :apm #NetSuite?  APM - Area Partnership Manager
+      t.string :sts #STS - Support & Training Specialist
+      t.text :notes #create a polymorphic notes table
       t.boolean :deleted
       t.string :created_by
       t.string :modified_by
-      t.string :net_suite_account_id
 
       t.timestamps
     end

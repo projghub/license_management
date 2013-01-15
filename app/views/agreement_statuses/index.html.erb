@@ -1,0 +1,35 @@
+<%- model_class = AgreementStatus -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<%= will_paginate(@agreement_statuses) %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_agreement_status_path,
+            :class => 'btn btn-primary' %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @agreement_statuses.each do |agreement_status| %>
+      <tr>
+        <td><%= link_to agreement_status.name, agreement_status_path(agreement_status) %></td>
+        <td><%=l agreement_status.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_agreement_status_path(agreement_status), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      agreement_status_path(agreement_status),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
