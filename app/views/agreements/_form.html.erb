@@ -19,33 +19,21 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :account_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :account_id, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
     <%= f.label :quantity, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :quantity, :class => 'number_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :notes, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :notes, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
     <%= f.label :start_date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :start_date, :class => 'date_select' %>
+      <%= f.text_field :start_date %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :end_date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :end_date, :class => 'date_select' %>
+      <%= f.text_field :end_date %>
     </div>
   </div>
   <div class="control-group">
@@ -57,37 +45,13 @@
   <div class="control-group">
     <%= f.label :funding_source, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :funding_source, :class => 'number_field' %>
+      <%= f.collection_select(:funding_source, FundingSource.all, :id, :name) %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :status_id, :class => 'control-label' %>
+    <%= f.label :agreement_status_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :status_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :deleted, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :deleted, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :created_by, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :created_by, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :modified_by, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :modified_by, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :net_suite_account_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :net_suite_account_id, :class => 'text_field' %>
+      <%= f.collection_select(:agreement_status_id, AgreementStatus.all, :id, :name) %>
     </div>
   </div>
 

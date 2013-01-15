@@ -9,21 +9,11 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:purchase_order_id) %></th>
-      <th><%= model_class.human_attribute_name(:purchase_order_item_id) %></th>
-      <th><%= model_class.human_attribute_name(:purchase_order_item_type_id) %></th>
-      <th><%= model_class.human_attribute_name(:account_id) %></th>
+      <th><%= model_class.human_attribute_name(:purchase_order_number) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%= model_class.human_attribute_name(:notes) %></th>
       <th><%= model_class.human_attribute_name(:start_date) %></th>
       <th><%= model_class.human_attribute_name(:end_date) %></th>
-      <th><%= model_class.human_attribute_name(:exuberance_coordinator_id) %></th>
-      <th><%= model_class.human_attribute_name(:funding_source) %></th>
       <th><%= model_class.human_attribute_name(:status_id) %></th>
-      <th><%= model_class.human_attribute_name(:deleted) %></th>
-      <th><%= model_class.human_attribute_name(:created_by) %></th>
-      <th><%= model_class.human_attribute_name(:modified_by) %></th>
-      <th><%= model_class.human_attribute_name(:net_suite_account_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -32,22 +22,12 @@
     <% @agreements.each do |agreement| %>
       <tr>
         <td><%= link_to agreement.id, agreement_path(agreement) %></td>
-        <td><%= agreement.purchase_order_id %></td>
-        <td><%= agreement.purchase_order_item_id %></td>
-        <td><%= agreement.purchase_order_item_type_id %></td>
-        <td><%= agreement.account_id %></td>
+        <td><%= agreement.purchase_order %></td>
         <td><%= agreement.quantity %></td>
-        <td><%= agreement.notes %></td>
         <td><%= agreement.start_date %></td>
         <td><%= agreement.end_date %></td>
-        <td><%= agreement.exuberance_coordinator_id %></td>
-        <td><%= agreement.funding_source %></td>
-        <td><%= agreement.status_id %></td>
-        <td><%= agreement.deleted %></td>
-        <td><%= agreement.created_by %></td>
-        <td><%= agreement.modified_by %></td>
-        <td><%= agreement.net_suite_account_id %></td>
-        <td><%=l agreement.created_at %></td>
+        <td><%= agreement.agreement_status %></td>
+        <td><%= agreement.created_at.strftime('%Y-%m-%d') %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_agreement_path(agreement), :class => 'btn btn-mini' %>

@@ -1,4 +1,4 @@
-Agreement.create(purchase_order_id: 1, purchase_order_item_id: 1, notes: 'This is the agreement')
+Agreement.create(purchase_order_id: 1, purchase_order_item_id: 1, start_date: Date.today, end_date: Date.today)
 
 Lookup.create(lookup_type: "lookup", name: "Name 1", value: "value 1", priority: 1)
 
@@ -8,12 +8,12 @@ LicenseTypeLookup.create(item_id: 1, license_type_id: 1)
 
 NetSuiteAccount.create(account_id: 1, name: "NetSuite Name", parent_name: "NetSuite Parent")
 
-PurchaseOrder.create(purchase_order_date: Date.new, number: "1234", sale_number: "2345", notes: "purchase order notes", net_suite_account_id: 1)
+purchase_order = PurchaseOrder.create(purchase_order_date: Date.today, number: "1234", sale_number: "2345", net_suite_account_id: 1)
+purchase_order.notes.build(description: 'purchase order note')
+
 PurchaseOrderItem.create(purchase_order_id: 1, number: "1234", amount: 10, quantity: 2, allocated_quantity: 1, deleted: false) 
 
-Opportunity.create(agreement_id: 1, created_date: Date.new)
-
-Sale.create(number: 1234, deleted: false)
+Opportunity.create(agreement_id: 1, created_date: Date.today)
 
 Region.create(name: "Central")
 Region.create(name: "Mountain")

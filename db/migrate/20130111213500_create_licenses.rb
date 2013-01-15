@@ -10,6 +10,6 @@ class CreateLicenses < ActiveRecord::Migration
   end
 
   def down
-    drop_tables :licenses
+    drop_table :licenses
   end
 end
