@@ -3,8 +3,6 @@ class CreateLicenseHistories < ActiveRecord::Migration
     create_table :license_histories do |t|
       t.integer :license_id, null: false
       t.integer :event_id
-      t.integer :previous_agreement_id
-      t.integer :current_agreement_id
       t.integer :previous_license_type_id
       t.integer :current_license_type_id
       t.integer :previous_license_status_id

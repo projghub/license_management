@@ -20,4 +20,5 @@ $(function() {
   $("#license_start_date").datepicker({dateFormat: 'yy-mm-dd'});
   $("#license_end_date").datepicker({dateFormat: 'yy-mm-dd'});
   $("#purchase_order_purchase_order_date").datepicker({dateFormat: 'yy-mm-dd'});
+  $("#month").datepicker({dateFormat: 'yy-mm'});
 });

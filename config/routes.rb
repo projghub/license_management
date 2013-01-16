@@ -3,6 +3,11 @@ LicenseManagement::Application.routes.draw do
   match '/login' => 'sessions#new', as: :login
   match '/logout' => 'sessions#destroy', as: :logout
 
+  match '/reports/thirty_sixty_ninety' => 'reports#thirty_sixty_ninety', as: :reports_thirty_sixty_ninety
+  match '/reports/month_expire_by_type' => 'reports#month_expire_by_type', as: :reports_month_expire_by_type
+  match '/reports/license_type' => 'reports#license_type', as: :reports_license_type
+  match '/reports/funding_source' => 'reports#funding_source', as: :reports_funding_source
+
   resources :funding_sources
   resources :license_statuses
   resources :license_types

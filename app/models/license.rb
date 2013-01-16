@@ -7,5 +7,6 @@ class License < ActiveRecord::Base
   has_many :notes, as: :noteable
 
   validates_presence_of :quantity
+  validates_presence_of :purchase_order_id
   validates_presence_of :license_type_id
 end

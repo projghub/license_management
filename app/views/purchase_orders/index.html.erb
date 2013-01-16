@@ -1,15 +1,61 @@
+<script type="text/javascript">
+  var addInputButton = function(id, txt, clk) {
+      var btn = $('<a>')
+          .text(txt)
+          .attr("id", id)
+          .addClass("btn")
+          .click(clk);
+      $('#filter_toggle').append(btn);
+      return btn;
+  };
+
+$(function() {
+  var btnId = "filterToggleButton";
+  var box = $("#filter");
+
+  var showBox = function() {
+    var filterButton = $('#' + btnId);
+    $("#filterToggleButton").addClass("active");
+    box.show();
+  };
+
+  var hideBox = function() {
+    var filterButton = $('#' + btnId);
+    $("#filterToggleButton").removeClass("active");
+    box.hide();
+  };
+
+  addInputButton(btnId, "Filter", function(event) {
+    if ($('#' + btnId).hasClass("active") === false) {
+      showBox();
+    } else {
+      hideBox();
+    }
+  });
+
+  $("#filterClose").click(function() {
+      hideBox();
+  });
+
+  // start shown
+  hideBox();
+
+})();
+</script>
+
 <%- model_class = PurchaseOrder -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
+<div id="filter_toggle">
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_purchase_order_path,
             :class => 'btn btn-primary' %>
-<%= link_to 'Filter', root_path, class: 'btn btn-success' %>
+</div>
+  <div id="filter"><%= render 'search' %></div>
 
 <%= will_paginate(@purchase_orders) %>
-<%= render 'search' %>
 
 <table class="table table-striped">
   <thead>

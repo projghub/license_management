@@ -1,0 +1,76 @@
+<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+              renderTo: 'report_container',
+              type: 'column',
+              marginBottom: 120
+            },
+            title: {
+              text: '30, 60, 90',
+              x: -20
+            },
+            subtitle: {
+              text: 'Licenses Up For Renewal',
+              x: -20
+            },
+            xAxis: {
+              categories: <%= raw @categories.map { |c| "#{c}" } %>,
+              labels: {
+                rotation: -45,
+                align: 'right',
+                style: {
+                  fontSize: '13px',
+                  fontFamily: 'Verdana, sans-serif'
+                }
+              }
+            },
+            yAxis: {
+              min: 0,
+              allowDecimals: false,
+              title: {
+                text: 'Total'
+              },
+              plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+              }]
+            },
+            tooltip: {
+              formatter: function() {
+                return '<b>'+ this.series.name +'</b><br/>'+
+                this.x +': '+ this.y;
+              }
+            },
+            series: [{
+              name: 'Licenses',
+              data: <%= raw @licenses_total.map { |l| l } %>
+            }]
+        });
+    });
+});
+</script>
+
+<div id="report_container" style="min-width: 400px; height: 400px; margin: 0 auto;"></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Licenses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each.with_index do |date, index| %>
+      <tr>
+        <td><%= link_to @categories[index], reports_month_expire_by_type_path(month: @categories[index]) %></td>
+        <td><%= @licenses_total[index] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,65 @@
+<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript">
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'report_container',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'License share by Funding Source'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+              percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Funding Source',
+                data: [
+                  <%= raw @data %>
+                  ]
+            }]
+        });
+    });
+    
+});
+</script>
+
+<div id="report_container" style="min-width: 400px; height: 400px; margin: 0 auto;"></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Licenses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each.with_index do |date, index| %>
+      <tr>
+        <td><%= @categories[index] %></td>
+        <td><%= @purchase_orders_total[index] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,7 +1,7 @@
 <div id="search_form">
   <%= search_form_for @q, html: { class: 'form-horizontal' } do |f| %>
     <div class="control-group">
-      <%= f.label :'PO Number', class: 'control-label' %>
+      <%= f.label :purchase_order_number, class: 'control-label' %>
       <div class="controls">
         <%= f.text_field :number_cont, class: 'text_field' %>
       </div>

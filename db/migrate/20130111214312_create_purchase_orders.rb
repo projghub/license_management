@@ -6,6 +6,7 @@ class CreatePurchaseOrders < ActiveRecord::Migration
       t.string :number
       t.integer :sale_number
       t.integer :invoice_number
+      t.integer :quantity
       t.date :purchase_order_date
       t.string :apm #NetSuite?  APM - Area Partnership Manager
       t.string :sts #STS - Support & Training Specialist

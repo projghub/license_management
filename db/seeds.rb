@@ -1,10 +1,14 @@
 
 NetSuiteAccount.create(account_id: 1, name: "NetSuite Name", parent_name: "NetSuite Parent")
 
-purchase_order = PurchaseOrder.create!(purchase_order_date: Date.today, number: "1234", sale_number: "2345", net_suite_account_id: 1, region_id: 1)
-purchase_order.notes.build(description: 'purchase order note')
+100.times.with_index do |element, index|
+  purchase_order = PurchaseOrder.create!(purchase_order_date: Date.today, number: index + 100, sale_number: index + 1000, net_suite_account_id: 1, region_id: 1, quantity: 100, funding_source_id: (index % 5) + 1)
+  purchase_order.notes.build(description: 'purchase order note')
+end
 
-License.create(purchase_order_id: 1, license_type_id: 1, license_status_id: 1, quantity: 20, start_date: Date.today, end_date: Date.today)
+500.times.with_index do |element, index|
+  License.create(purchase_order_id: (index % 100), license_type_id: (index % 10)+1, license_status_id: 1, quantity: rand(1..30), start_date: Date.today, end_date: rand(100.days).from_now)
+end
 
 Region.create(name: "Central")
 Region.create(name: "Mountain")
@@ -35,8 +39,8 @@ FundingSource.create(name: "Title 1")
 FundingSource.create(name: "Title 3")
 FundingSource.create(name: "Parent Center")
 
-LicenseStatus.create!(name: "New")
-LicenseStatus.create!(name: "Pending")
+LicenseStatus.create!(name: "Active")
+LicenseStatus.create!(name: "Pending Renewal")
 LicenseStatus.create!(name: "Not Renewing")
 
 ProductVersion.create!(name: "Odyssey")

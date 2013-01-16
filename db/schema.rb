@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(:version => 20130115213014) do
   create_table "license_histories", :force => true do |t|
     t.integer  "license_id",                 :null => false
     t.integer  "event_id"
-    t.integer  "previous_agreement_id"
-    t.integer  "current_agreement_id"
     t.integer  "previous_license_type_id"
     t.integer  "current_license_type_id"
     t.integer  "previous_license_status_id"
@@ -86,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130115213014) do
     t.string   "number"
     t.integer  "sale_number"
     t.integer  "invoice_number"
+    t.integer  "quantity"
     t.date     "purchase_order_date"
     t.string   "apm"
     t.string   "sts"

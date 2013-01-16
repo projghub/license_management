@@ -3,6 +3,8 @@ class Region < ActiveRecord::Base
 
   has_many :purchase_orders
 
+  validates_presence_of :name
+
   def to_s
     self.name
   end

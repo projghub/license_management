@@ -6,8 +6,6 @@ describe LicenseHistory do
 
   it { should respond_to(:license_id) }
   it { should respond_to(:event_id) }
-  it { should respond_to(:previous_agreement_id) }
-  it { should respond_to(:current_agreement_id) }
   it { should respond_to(:previous_license_type_id) }
   it { should respond_to(:current_license_type_id) }
   it { should respond_to(:previous_license_status_id) }
