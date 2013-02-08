@@ -8,6 +8,7 @@ LicenseManagement::Application.routes.draw do
   match '/reports/license_type' => 'reports#license_type', as: :reports_license_type
   match '/reports/funding_source' => 'reports#funding_source', as: :reports_funding_source
 
+  resources :events
   resources :funding_sources
   resources :license_statuses
   resources :license_types
