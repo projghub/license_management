@@ -16,120 +16,190 @@ $ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 $ thin start --ssl --ssl-verify --ssl-key-file /home/dane/www/ruby/ssl/server.key --ssl-cert-file /home/dane/www/ruby/ssl/server.crt
 
 
+PROJECT DESCRIPTION
+- We have 12 renewal dates (last day of every month)
+- A Perpertual license is 1 or 4 years
+- License Management System (LMS) includes 4 systems.
+  - LMS
+  - NetSuite - Our CRM
+  - Central - This is our phone home server for all of our engines.
+  - PSC.xlsx - Julie's super-de-duper custom spreadsheet
+- LMS controls the root level of Central
+- Allocation happens in Central, if the district is on a server
+- Allocation happens in LMS if everyone has their own Engine
+- LMS pre-dates NetSuite (5+) years
+- NetSuite tracks all of the sales information, including Cusomters/APM/Sales Orders.  LMS uses information from NetSuite.  It is linked through the AccountID column.
+- LMS gets a nightly update from NetSuite.
 
 
-Acceptance Criteria
+REPORTS
+- 30/60/90
+- POs That Have Not Been Allocated or are Partials
+- School History
+- Pilot Licenses Due to Expire
+- Licenses Due to Expire
+- Expired, This month, 1 month
+- License Summary (By Status) (Active, Renewed, Converted, Total)
+- License Summary (By Type) (New, Renewal, Expansion, Free, Perpetual, Converted, Pilot, SES, Total)
 
-Training is hell
 
-As an APM, when I sell less licenses and turn down licenses in LMS, then LMS should update Central with the correct amount of licenses (or correct as possible, meaning not taking away assigned licenses).
+GOALS
+- Training is hell. Need to make training easier.
+- Need better reporting
+- We want post sale contracts to go away
+- We need to avoid Double/Triple entry into CRM, LMS, and Central and THE BEAST
 
-We have 12 renewal dates (last day of every month)
 
-Perpertual license is 1 or 4 years
+ACCEPTANCE CRITERIA
+- As an APM, when I sell less licenses and turn down licenses in LMS, then LMS should update Central with the correct amount of licenses (or correct as possible, meaning not taking away assigned licenses).  LMS never decreases the license count in Central
+- All I care about is "Are they on an Engine?" and "Are they on a Server?"
+- There is not a place to add Spanish Licenses
+- The report only goes to Julie from Central.  The report needs to go to Frantz (and others) to help clean up Central licenses that are not needed.
+- NetSuite generate the Sales Order number, and we manually put it into LMS.  We need a way to search by the PO number is the customers internal
+- We need to be able to search by Invoice number as well
+- Have a way to put in License Types
+- State wide licensing has special cases and it's own issues
 
-NetSuite (our CRM)
-Salesman puts in Opportunities
 
-Purchase order comes in
-Click on receive Purchase Order
-
-All I care about is "Are they on an Engine?" and "Are they on a Server?"
-
-Purchase Order Sale Number = NetSuite.Opportunity sales number
-
+WORK FLOW
 Opportunity -> Quote -> Sales Order -> Invoice  (what we use to bill the customer)
 
-LMS controls the root level of Central
+Salesman puts in Opportunities into NetSuite
 
-Report happens end of each month 30, 60, 90, automatically gets sent to the APM
-salesmen look at the report each month so they know who to call
+A Purchase order comes in
+Click on Receive > Purchase Order
 
-There is not a place to add Spanish Licenses
+A Purchase Order Sale Number = NetSuite.Opportunity sales number
 
-LMS never decreases the license count in Central
+A report happens end of each month (30, 60, 90). This is automatically sent to the APM.
+Salesmen look at this report each month so they know who to call for expiring licenses.
 
-The report only goes to Julie from Central.  The report needs to go to Frantz (and others) to help clean up Central licenses that are not needed.
 
-NetSuite generate the Sales Order number, and we manually put it into LMS.  We need a way to search by the PO number is the customers internal
-We need to be able to search by Invoice number as well
-
-Glossary
+GLOSSARY
 Allocate Purchase Order - Take purchase order and divide the licenses between Schools in one District
 Purchase Order Number - Unique from the Customer, we enter into NetSuite
 Sales Order Number ( Sale Number ) - Generated in NetSuite (our internal number) from our Purchase Order Number
 On a Sale - is where all the work happens
 Invoice Number - We generate this when we create an invoice to send to the customer
 On an Invoice - Commissions are paid, revenue is released, customer is billed
-Renewal Rate - 
+Renewal Rate -  % of active licenses / % of last years active licenses
 Reassign License - Needs to retain the same renewal license
 Killing - We get rid of them if Schools don't need them or they haven't paid for them
 Closed License - If a School closes and the license(s) are transferred elsewhere in the District
 Post Sale Contract -
 
-License Management System (LMS)
-NetSuite - Our CRM
-Central - This is our phone home server for all of our engines.
-PSC.xlsx - Julie's super-de-duper custom spreadsheet
-
-We want post sale contracts to go away
-We need to avoid Double/Triple entry into CRM, LMS, and Central and THE BEAST
-
-We are not tracking what product version of the product they have
-
-Have a way to put in License Types
-
-Allocation happens in Central, if the district is on a server
-
-Allocation happens in LMS if everyone has their own Engine
+License - 
+Initial - 
+Renewal - 
+Free - 
+Perpetual - 
+Converted To Perpetual - 
+Pilot - 
+SES - 
 
 
-The glitch has to do when transferring licenses.  The program "renews itself" sometimes
 
-State wide licensing has special cases and it's own issues
-LMS pre-dates NetSuite (5+) years
+Right now, we have license types defined as:
 
-What does LMS do that are not done in NetSuite?  We can set renewal dates and a report (30/60/90) is sent to every APM.
-Nightly update
-
-This calculates "Renewal Rates"
-
-
-REPORTS
-
-License Summary (By Status)
-Active
-Renewed
-Converted
-Total
-
-License Summary (By Type)
-New
+(NAME)
+Initial
 Renewal
-Expansion
 Free
 Perpetual
-Converted
+Converted To Perpetual
 Pilot
 SES
-Total
 
-Licenses Due to Expire
-Expired, This month, 1 month
+Moving forward, let's say we want Spanish licenses.  Do we want to keep adding more types/names?
 
-Pilot Licenses Due to Expire
+(NAME)
+Spanish Initial
+Spanish Renewal
+etc...
 
-POs That Have Not Been Allocated or are Partials
+Or, would we like to start classifying licenses by delivery/platform?
 
-Where are reports.imageinelearning.com served from?  Need to be on the VPN
+NAME       PLATFORM
+Initial    English
+Initial    Spanish
+Initial    Tablet
 
-What about site licenses?
+This would make it so that you could buy "Initial" licenses for English, Spanish, Tablet, etc.
 
-Tracking for all license information.
-NetSuite tracks all of the sales information, including Cusomters/APM/Sales Orders
-LMS uses information from NetSuite.  It is linked through AccountID key.
+What happens when we add Tablet (or SAAS)?  Are there English Tablet and Spanish Tablet licenses? or are there just Tablet licenses?
 
-Deployment
-Any new changes run from Ben's machine
-Pulls a local copy of the database.
-No current unit tests/automated tests
+Are there times when we would want to combine licenses?  For example, if a School has 100 English licenses, do they also get 100 Tablet licenses?
+
+What should we be reporting on?  If we combine 100 English with 100 Tablet, should the totals report show 200 total licenses or 100 total?
+
+Should "Free" be another attribute of a license?  So, if a Customer bought 100 English Initial, received 20 free, and received 120 tablet licenses included with the English license.
+
+(NAME)     (PLATFORM)   (COUNT)    (FREE)
+Initial     English      100        No
+Initial     English       20        Yes
+Initial     Tablet       120        Yes
+
+Again, would this be 120 total licenses? or 100 licenses (since 20 are free)?  Or 240 licenses including all licenses?
+
+
+
+PRODUCT VERSION
+Aquarius
+Whitney
+Odyssey
+
+FUNDING
+Title 1
+Title 3
+
+STUDENT GROUP
+English Learner/Struggling Reader/
+
+DELIVERY TYPE
+PC/Mac/Tablet/Mobile
+
+INSTALLATION TYPE
+SAAS/On Site Install
+
+PRODUCT TYPE
+English/Spanish
+
+SERVER TYPE
+District
+School
+
+PLATFORM
+Windows
+Mac
+iOS
+Android
+Windows Mobile
+
+QUESTIONS
+Can the same license be accessed by PC, Mac and Tablet?
+
+Are there different pricing structures for English initial, Spanish initial, site licenses?
+
+Should site licenses (and spanish licenses) show in the renewal rate?
+
+Should site licenses show in the usage reports?  If a district does 10,000 site licenses, and only 50 kids use it, should that be 100% of usage?  or .5% usage?
+
+Can we sell 100 English licenses and give away 50 free Spanish licenses?
+
+What if we add Korean (or German/Russian/etc.) as another product?  Do we need 8 license types for each of those?
+
+Do we need to prevent anyone from transferring English Licenses to Spanish Licenses?
+
+Is "Free" an attribute?  Or an actual license type?  Does Central need to know if it's free or not?
+
+Would we ever want to see a report about how many Tablet licenses we have sold?
+
+Would we ever want to see a report about how many SAAS licenses we have sold?
+
+Is Free, Perpetual, Annual, Site just a state?  The license is technically the same.  An end-user would never know the difference.
+
+If we sell a state wide license, how does that get reported?  If they want 10,000 licenses, and a school takes 1,000 and only uses 10, should our usage report show .1% usage?
+
+Do we want to remove site licenses completely from usage reports?
+
+We could do a renewal table.  Each time a license renews, add a record that it renewed.  We could then calculate the average time a school stays on our product and Lifetime Value of our Customers.

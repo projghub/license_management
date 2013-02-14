@@ -9,9 +9,12 @@ LicenseManagement::Application.routes.draw do
   match '/reports/funding_source' => 'reports#funding_source', as: :reports_funding_source
 
   resources :events
+  resources :delivery_types
   resources :funding_sources
+  resources :groups
   resources :license_statuses
   resources :license_types
+  resources :platforms
   resources :product_versions
   resources :purchase_orders do
     resources :licenses
