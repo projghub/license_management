@@ -125,4 +125,11 @@ Where are reports.imageinelearning.com served from?  Need to be on the VPN
 
 What about site licenses?
 
-We need a test/staging environment setup so that QA can test things and that we are not working on live data.
+Tracking for all license information.
+NetSuite tracks all of the sales information, including Cusomters/APM/Sales Orders
+LMS uses information from NetSuite.  It is linked through AccountID key.
+
+Deployment
+Any new changes run from Ben's machine
+Pulls a local copy of the database.
+No current unit tests/automated tests
