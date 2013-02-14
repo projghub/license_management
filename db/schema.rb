@@ -77,15 +77,15 @@ ActiveRecord::Schema.define(:version => 20130214204838) do
   end
 
   create_table "licenses", :force => true do |t|
-    t.integer  "purchase_order_id", :null => false
-    t.integer  "license_type_id",   :null => false
-    t.integer  "agreement_id"
+    t.integer  "purchase_order_id",    :null => false
+    t.integer  "license_type_id",      :null => false
+    t.string   "net_suite_account_id"
     t.integer  "license_status_id"
     t.integer  "quantity"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "net_suite_accounts", :force => true do |t|
