@@ -1,0 +1,88 @@
+<%= form_for @license, url: '/', :html => { class: 'form-horizontal' } do |f| %>
+  <%= render 'layouts/error_messages', target: @license %>
+  <div class="control-group">
+    <%= f.label :quantity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :quantity, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_date %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_date %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :license_status_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_status_id, LicenseStatus.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :license_type_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_type_id, LicenseType.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :funding_source_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_type_id, FundingSource.all, :id, :name, {include_blank: true}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :product_version, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_type_id, ProductVersion.all, :id, :name, {include_blank: true}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :installation_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_type_id, InstallationType.all, :id, :name, {include_blank: true}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :server_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:license_type_id, ServerType.all, :id, :name, {include_blank: true}) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :delivery_type, :class => 'control-label' %>
+    <div class="controls">
+      <% DeliveryType.all.each do |delivery_type| %>
+        <p><%= check_box_tag delivery_type.name %> <%= delivery_type.name %></p>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :platforms, :class => 'control-label' %>
+    <div class="controls">
+      <% Platform.all.each do |platform| %>
+        <p><%= check_box_tag platform.name %> <%= platform.name %></p>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :group, :class => 'control-label' %>
+    <div class="controls">
+      <% Group.all.each do |group| %>
+        <p><%= check_box_tag group.name %> <%= group.name %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                purchase_orders_path(@license.purchase_order), :class => 'btn' %>
+  </div>
+<% end %>

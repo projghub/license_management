@@ -30,4 +30,8 @@ class LicensesController < ApplicationController
     @license.destroy
     redirect_to @license, notice: 'Successfully deleted.'
   end
+
+  def proposal
+    @license = License.new
+  end
 end

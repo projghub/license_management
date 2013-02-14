@@ -12,6 +12,7 @@ LicenseManagement::Application.routes.draw do
   resources :delivery_types
   resources :funding_sources
   resources :groups
+  resources :installation_types
   resources :license_statuses
   resources :license_types
   resources :platforms
@@ -20,7 +21,10 @@ LicenseManagement::Application.routes.draw do
     resources :licenses
   end
   resources :regions
+  resources :server_types
   resources :sessions, only: [:new, :create, :destroy]
  
+  match '/proposal' => 'licenses#proposal'
+
   root :to => 'static_pages#dashboard'
 end
