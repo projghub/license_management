@@ -1,0 +1,25 @@
+--UP
+CREATE TABLE product_types
+  id INT NOT NULL,
+  name VARCHAR(255),
+  PRIMARY KEY (id);
+INSERT INTO product_types SET name = "English";
+INSERT INTO product_types SET name = "Spanish";
+--DOWN
+DROP TABLE product_types
+
+--UP
+ALTER TABLE `licenses` ADD COLUMN product_type_id INT;
+UPDATE licenses SET product_type_id = 1;
+--DOWN
+ALTER TABLE `licenses` DROP COLUMN product_type_id;
+
+--UP
+ALTER TABLE `purchaseorderitem` ADD COLUMN license_type_id INT;
+UPDATE `purchaseorderitem` SET license_type_id = (SELECT license_type_id FROM ItemLookupTable WHERE ItemLookupTable.item_id = this.item_id);
+ALTER TABLE `purchaseorderitem` DROP COLUMN item_id; --Destructive
+DROP TABLE `POItemLookup`
+DROP TABLE `otheritemlookuptable`
+--DOWN
+ALTER TABLE `purhcaseorderitem` ADD COLUMN item_id INT;
+ALTER TABLE `purchaseorderitem` DROP COLUMN license_type_id;
