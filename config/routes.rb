@@ -25,6 +25,7 @@ LicenseManagement::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
  
   match '/proposal' => 'licenses#proposal'
+  match '/angular' => 'static_pages#angular'
 
   root :to => 'static_pages#dashboard'
 end

@@ -1,0 +1,17 @@
+<div ng-controller="HomeController">
+  <a href="/#">Home</a> | <a href="/#/product_versions">Product Versions</a>
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        Search: <input ng-model="query">
+      </div>
+      <div class="span9">
+        <ul class="product_versions">
+          <li ng-repeat="product_version in product_versions | filter:query | orderBy:orderProp">
+          {{ product_version.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

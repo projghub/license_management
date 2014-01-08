@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="CentralManagementApp">
   <head>
     <meta charset="wtf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
+
+    <script src="//code.angularjs.org/1.2.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
     <%= javascript_include_tag "application" %>
 
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <div class="container">
-      <%= render 'layouts/header' %>
-      <%= render 'layouts/flash_messages' %>
+    <div ng-view>
       <%= yield %>
-      <%= render 'layouts/footer' %>
-  </div>
+    </div>
   </body>
 </html>

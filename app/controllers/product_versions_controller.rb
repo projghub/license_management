@@ -2,6 +2,12 @@ class ProductVersionsController < ApplicationController
   def index
     @q = ProductVersion.search(params[:q])
     @product_versions = @q.result(distinct: true).paginate(per_page: 20, page: params[:page])
+
+  respond_to do |format|
+    format.html
+    format.json { render :json => @product_versions }
+  end
+
   end
 
   def new

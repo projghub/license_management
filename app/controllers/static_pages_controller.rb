@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
 
   def dashboard
   end
+
+  def angular
+  end
 end
