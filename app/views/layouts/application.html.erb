@@ -9,14 +9,22 @@
 
     <script src="//code.angularjs.org/1.2.7/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
     <%= javascript_include_tag "application" %>
 
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <div ng-view>
-      <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <a href="/#">Home</a> | <a href="/#/product_versions">Product Versions</a>
+        </div>
+      </div>
+      <div class="mywindow">
+        <div ng-view></div>
+      </div>
     </div>
   </body>
 </html>

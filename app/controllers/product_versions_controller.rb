@@ -30,6 +30,11 @@ class ProductVersionsController < ApplicationController
 
   def show
     @product_version = ProductVersion.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @product_version }
+    end
   end
 
   def update

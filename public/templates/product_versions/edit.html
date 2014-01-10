@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="span12">
+    <h1 ng-hide="newEvent">Edit Product Version</h1>
+    <h1 ng-show="newEvent">New Product Version</h1>
+  </div>
+</div>
+
+<form class="form-horizontal">
+  <div class="control-group">
+    <label for="product_version_name" class="control-label">Name</label>
+    <div class="controls">
+      <input type="text" class="form-control" name="product_version_name" ng-model="product_version.name" />
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" ng-click="save()" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</form>

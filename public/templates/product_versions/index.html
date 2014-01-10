@@ -1,6 +1,38 @@
-<a href="/#">index</a>
-<ul>
-  <li ng-repeat="product_version in product_versions">
-    <a ng-click="viewProductVersion(product_version.id)">{{ product_version.name }}</a>
-  </li>
-</ul>
+<div class="row">
+  <div class="span12">
+    <h1>Product Versions</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <a href="/#/product_versions/new" ng-click="editProductVersion('new')" class="btn-primary btn">New</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span3">
+    Search: <input ng-model="search">
+  </div>
+  <div class="span9">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product_version in product_versions | filter:search">
+          <td>
+            <a ng-click="showProductVersion(product_version.id)">{{ product_version.name }}</a>
+          </td>
+          <td>
+            <a href="/#/product_versions/{{ product_version.id }}/edit" ng-click="editProductVersion(product_version)" class="btn">Edit</a>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
